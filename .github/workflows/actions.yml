@@ -24,6 +24,4 @@ jobs:
           cd /home/runner/
           mkdir Mount
           cd ../../..
-          sudo rclone mount PaheMain: /home/runner/Mount --allow-non-empty --daemon --allow-other --cache-db-purge --buffer-size 32M --use-mmap --dir-cache-time 4h --drive-chunk-size 16M  --timeout 1h  --vfs-cache-mode minimal --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G --fast-list
-          ls /home/runner/Mount/
-          
+          sudo rclone mount PaheMain: /home/runner/Mount --allow-non-empty --allow-other --cache-db-purge --buffer-size 32M --use-mmap --dir-cache-time 4h --drive-chunk-size 16M  --timeout 1h  --vfs-cache-mode minimal --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G --fast-list & ls /home/runner/Mount/
