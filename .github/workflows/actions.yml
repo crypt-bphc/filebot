@@ -16,5 +16,6 @@ jobs:
         run: |
           sudo apt update
           sudo apt install openjdk-8-jdk
-          java -version
+          sudo wget https://github.com/crypt-bphc/filebot/raw/main/FileBot.jar
+          sudo java -jar FileBot.jar -help
           
