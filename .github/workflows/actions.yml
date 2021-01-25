@@ -16,4 +16,14 @@ jobs:
         run: |
           sudo wget https://github.com/crypt-bphc/filebot/raw/main/FileBot.jar
           sudo java -jar FileBot.jar -help
+          curl https://rclone.org/install.sh | sudo bash
+          mkdir -p ~/.config/rclone
+          cat >  ~/.config/rclone/rclone.conf  << EOF
+          ${{ secrets.RCLONE_CONFIG }}
+          EOF
+          cd /home/runner/
+          mkdir Mount
+          cd ../../..
+          sudo rclone mount Media: /home/runner/Mount --allow-non-empty --daemon --allow-other --cache-db-purge --buffer-size 32M --use-mmap --dir-cache-time 4h --drive-chunk-size 16M  --timeout 1h  --vfs-cache-mode minimal --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G --fast-list
+          ls /home/runner/Mount/
           
