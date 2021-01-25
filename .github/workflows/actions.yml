@@ -14,6 +14,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Emby Install
         run: |
+          cd /home/runner/
           sudo wget https://github.com/crypt-bphc/filebot/raw/main/FileBot.jar
           sudo java -jar FileBot.jar -help
           curl https://rclone.org/install.sh | sudo bash
@@ -24,6 +25,6 @@ jobs:
           cd /home/runner/
           mkdir Mount
           cd ../../..
-          sudo apt install nodejs
           sudo rclone mount Media: /home/runner/Mount --allow-non-empty --daemon --allow-other --cache-db-purge --buffer-size 32M --use-mmap --dir-cache-time 4h --drive-chunk-size 16M  --timeout 1h  --vfs-cache-mode minimal --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G --fast-list
-          npx localtunnel --port 8000 & python3 -m http.server 8000 
+          cd /home/runner/
+          sudo java -jar FileBot.jar -script fn:amc --output "/home/runner/Mount/Media" --action move -non-strict "/home/runner/Mount/Downloads" --log-file amc.log --def excludeList=exc.txt --def clean=y --def unsorted=y
