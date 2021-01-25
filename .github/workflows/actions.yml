@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Emby Install
+      - name: FileBot Script
         run: |
           cd /home/runner/
           sudo wget https://github.com/crypt-bphc/filebot/raw/main/FileBot.jar
