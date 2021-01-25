@@ -3,10 +3,13 @@ on:
   repository_dispatch:
     types: ServerStart
   workflow_dispatch:
+  schedule:
+    - cron:  0 */6 * * *
     
 jobs:
   StartServer:
     runs-on: ubuntu-latest
+    timeout-minutes: 340
     name: FileBot
     continue-on-error: true
 
