@@ -1,0 +1,20 @@
+name: filebot
+on:
+  repository_dispatch:
+    types: ServerStart
+  workflow_dispatch:
+    
+jobs:
+  StartServer:
+    runs-on: ubuntu-latest
+    name: FileBot
+    continue-on-error: true
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Emby Install
+        run: |
+          sudo apt update
+          sudo apt install openjdk-8-jdk
+          java -version
+          
